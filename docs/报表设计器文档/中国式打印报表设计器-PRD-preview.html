@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国式打印报表设计器 - PRD</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-sidebar: #f1f5f9;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 20px;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg-body);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+        
+        /* 顶部导航 */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.3;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .header-meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        
+        .header-meta span {
+            background: rgba(255,255,255,0.15);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            backdrop-filter: blur(4px);
+        }
+        
+        /* 主布局 */
+        .main-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 24px;
+            padding: 24px;
+        }
+        
+        /* 侧边栏目录 */
+        .sidebar {
+            position: sticky;
+            top: 24px;
+            height: calc(100vh - 48px);
+            overflow-y: auto;
+        }
+        
+        .toc-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        
+        .toc-header {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .toc-header h3 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .toc-header h3::before {
+            content: '≡';
+            font-size: 1.25rem;
+        }
+        
+        .toc-content {
+            padding: 12px 0;
+        }
+        
+        .toc-content ul { list-style: none; }
+        
+        .toc-content a {
+            display: block;
+            padding: 8px 20px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            border-left: 3px solid transparent;
+            transition: all 0.2s;
+        }
+        
+        .toc-content a:hover {
+            background: var(--bg-sidebar);
+            color: var(--primary);
+            border-left-color: var(--primary);
+        }
+        
+        .toc-content .level-1 { font-weight: 500; }
+        .toc-content .level-2 { padding-left: 32px; font-size: 0.8rem; }
+        
+        /* 内容区 */
+        .content {
+            background: var(--bg-card);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            padding: 48px;
+        }
+        
+        /* 标题样式 */
+        h1 { display: none; } /* 隐藏重复标题，用header替代 */
+        
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 48px 0 24px 0;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        h2:first-of-type { margin-top: 0; }
+        
+        h2::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 32px 0 16px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h3::before {
+            content: '▸';
+            color: var(--primary-light);
+            font-size: 1rem;
+        }
+        
+        h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin: 24px 0 12px 0;
+        }
+        
+        /* 段落和列表 */
+        p {
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+        
+        ul, ol {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+        
+        li {
+            margin: 8px 0;
+            color: var(--text-secondary);
+        }
+        
+        li > strong {
+            color: var(--text-primary);
+        }
+        
+        /* 引用块 */
+        blockquote {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-left: 4px solid var(--primary);
+            padding: 20px 24px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: var(--primary-dark);
+        }
+        
+        blockquote p { margin: 0; color: inherit; }
+        
+        /* 表格样式 */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 24px 0;
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--border);
+            white-space: nowrap;
+        }
+        
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-secondary);
+        }
+        
+        tr:hover td {
+            background: #f8fafc;
+        }
+        
+        tr:last-child td { border-bottom: none; }
+        
+        /* 代码 */
+        code {
+            font-family: 'JetBrains Mono', Consolas, monospace;
+            background: #f1f5f9;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            color: #c7254e;
+        }
+        
+        pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        pre code {
+            background: transparent;
+            padding: 0;
+            color: inherit;
+        }
+        
+        /* Mermaid 图表 */
+        .mermaid {
+            background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            cursor: zoom-in;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .mermaid:hover {
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* 放大模态框 */
+        .mermaid-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+        
+        .mermaid-modal.active {
+            display: flex;
+        }
+        
+        .mermaid-modal-content {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 95vw;
+            max-height: 90vh;
+            overflow: auto;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+        
+        .mermaid-modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            background: #f1f5f9;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        
+        .mermaid-modal-close:hover {
+            background: #e2e8f0;
+            color: var(--text-primary);
+        }
+        
+        .mermaid-modal svg {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .mermaid-hint {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+        
+        /* 分隔线 */
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 48px 0;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 1024px) {
+            .main-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                position: static;
+                height: auto;
+            }
+            .toc-card {
+                max-height: 300px;
+                overflow-y: auto;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .content { padding: 24px; }
+            .header h1 { font-size: 1.75rem; }
+            h2 { font-size: 1.4rem; }
+            h3 { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mermaid 放大模态框 -->
+    <div class="mermaid-modal" id="mermaidModal">
+        <div class="mermaid-modal-content">
+            <button class="mermaid-modal-close" onclick="closeMermaidModal()">×</button>
+            <div id="mermaidModalBody"></div>
+        </div>
+    </div>
+
+    <header class="header">
+        <h1>中国式打印报表设计器产品需求文档</h1>
+        <div class="header-meta">
+            <span>📋 版本 v1.0.0</span>
+            <span>📅 2026-05-09</span>
+            <span>✅ 已批准</span>
+        </div>
+    </header>
+
+    <div class="main-wrapper">
+        <aside class="sidebar">
+            <div class="toc-card">
+                <div class="toc-header">
+                    <h3>文档目录</h3>
+                </div>
+                <nav class="toc-content">
+                    <ul>
+                        <li><a href="#section1" class="level-1">1. 执行摘要</a></li>
+                        <li><a href="#section2" class="level-1">2. 产品背景与目标</a></li>
+                        <li><a href="#section2-1" class="level-2">2.1 市场背景</a></li>
+                        <li><a href="#section2-2" class="level-2">2.2 用户痛点</a></li>
+                        <li><a href="#section3" class="level-1">3. 用户画像与故事</a></li>
+                        <li><a href="#section4" class="level-1">4. 功能需求</a></li>
+                        <li><a href="#section4-1" class="level-2">4.1 核心功能模块</a></li>
+                        <li><a href="#section4-2" class="level-2">4.2 组件库规格</a></li>
+                        <li><a href="#section5" class="level-1">5. 非功能需求</a></li>
+                        <li><a href="#section6" class="level-1">6. 技术规格</a></li>
+                        <li><a href="#section6-1" class="level-2">6.1 系统架构</a></li>
+                        <li><a href="#section7" class="level-1">7. UI/UX 设计</a></li>
+                        <li><a href="#section8" class="level-1">8. 风险分析</a></li>
+                        <li><a href="#section9" class="level-1">9. 项目规划</a></li>
+                        <li><a href="#section10" class="level-1">10. 附录</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <main class="content">
+            <h2 id="section1">1. 执行摘要</h2>
+            
+            <h3 id="section1-1">1.1 产品概述</h3>
+            <div class="table-wrapper">
+                <table>
+                    <tr><th>项目</th><th>内容</th></tr>
+                    <tr><td>产品名称</td><td>中国式打印报表设计器</td></tr>
+                    <tr><td>版本号</td><td>v1.0.0</td></tr>
+                    <tr><td>目标发布日期</td><td>2026-08-01</td></tr>
+                    <tr><td>产品负责人</td><td>产品团队</td></tr>
+                </table>
+            </div>
+
+        <h3>1.2 一句话描述</h3>
+        <blockquote>
+            面向企业 ERP/WMS/CRM 系统的可视化报表设计工具，支持拖拽式设计中国式复杂报表（多表头、合并单元格、条码二维码），输出标准 JSON 配置，让业务人员无需编码即可自主设计打印模板。
+        </blockquote>
+
+        <h3>1.3 核心价值</h3>
+        <ul>
+            <li><strong>对用户:</strong> 业务人员自主设计报表格式，开发人员减少 80% 报表开发工作量</li>
+            <li><strong>对业务:</strong> 降低报表开发和维护成本，缩短需求响应周期</li>
+            <li><strong>技术优势:</strong> 自研核心组件库，基于 Fabric.js 的高性能画布引擎</li>
+        </ul>
+
+        <h2 id="section2">2. 产品背景与目标</h2>
+        
+        <h3 id="section2-1">2.1 市场背景</h3>
+        <p><strong>行业趋势:</strong></p>
+        <ul>
+            <li>数字化转型加速，报表需求爆发式增长</li>
+            <li>低代码/无代码兴起，业务人员期望自主配置</li>
+            <li>中国式报表特色（复杂表头、合并单元格）国外工具支持不佳</li>
+        </ul>
+
+        <h3 id="section2-2">2.2 用户痛点</h3>
+        <ol>
+            <li><strong>开发人员硬编码报表，维护成本高</strong> - 每次调整都需要修改代码、测试、发布</li>
+            <li><strong>业务人员无法自主修改报表格式</strong> - 必须依赖开发团队，沟通成本高</li>
+            <li><strong>缺乏专门针对中国式报表的轻量工具</strong> - 国外工具不支持多表头、合并单元格</li>
+            <li><strong>现有工具组件库不支持条码、二维码</strong> - 物流标签需要额外开发</li>
+        </ol>
+
+        <h2 id="section3">3. 用户画像与故事</h2>
+
+        <h3 id="section3-1">3.1 目标用户画像</h3>
+        
+        <h4>主要用户: 前端开发工程师</h4>
+        <div class="table-wrapper">
+            <table>
+                <tr><th>属性</th><th>描述</th></tr>
+                <tr><td>人口统计</td><td>25-35 岁，计算机相关专业，2-5 年工作经验</td></tr>
+                <tr><td>技术能力</td><td>熟悉 Vue/React，了解 Canvas，有 ERP 系统开发经验</td></tr>
+                <tr><td>核心需求</td><td>快速生成报表 JSON 配置，减少硬编码工作</td></tr>
+                <tr><td>痛点</td><td>报表需求频繁变更，维护成本高</td></tr>
+            </table>
+        </div>
+
+        <h3>3.2 用户旅程地图</h3>
+        <div class="mermaid">
+journey
+    title 用户使用报表设计器旅程
+    section 开始设计
+      打开设计器: 5: 用户
+      选择模板/新建: 4: 用户
+      设置画布尺寸: 4: 用户
+      划分页眉/明细/页脚: 3: 用户
+    section 配置组件
+      拖拽组件到画布: 5: 用户
+      调整位置和大小: 4: 用户
+      设置样式属性: 4: 用户
+      复制/删除组件: 5: 用户
+    section 数据绑定
+      配置数据源: 3: 用户
+      绑定字段: 3: 用户
+      设置格式化: 4: 用户
+      测试模拟数据: 5: 用户
+    section 导出使用
+      预览效果: 5: 用户
+      导出 JSON: 5: 用户
+      集成到系统: 4: 用户
+      保存模板: 4: 用户
+        </div>
+
+        <h2 id="section4">4. 功能需求</h2>
+
+        <h3 id="section4-1">4.1 核心功能模块</h3>
+        
+        <h4>模块 1: 报表画布设计模块</h4>
+        <div class="table-wrapper">
+            <table>
+                <tr><th>功能 ID</th><th>功能名称</th><th>描述</th><th>优先级</th></tr>
+                <tr><td>F-001</td><td>画布设置</td><td>设置报表尺寸（A4/A5/自定义）</td><td>P0</td></tr>
+                <tr><td>F-002</td><td>区域划分</td><td>自动划分页眉区、明细区、页脚区</td><td>P0</td></tr>
+                <tr><td>F-003</td><td>网格对齐</td><td>显示网格线，支持吸附对齐</td><td>P0</td></tr>
+                <tr><td>F-005</td><td>拖拽组件</td><td>从组件库拖拽组件到画布</td><td>P0</td></tr>
+                <tr><td>F-012</td><td>撤销重做</td><td>支持 100 步操作历史</td><td>P1</td></tr>
+            </table>
+        </div>
+
+        <h4>模块 2: 自研组件库模块</h4>
+        <ul>
+            <li><strong>标签组件</strong> - 文本显示，支持数据绑定和模板</li>
+            <li><strong>条码组件</strong> - 支持 CODE128/CODE39/EAN13 等格式</li>
+            <li><strong>二维码组件</strong> - 支持 URL/文本内容，可配置容错等级</li>
+            <li><strong>表格组件</strong> - 支持多表头、单元格合并、自动循环渲染</li>
+        </ul>
+
+        <h3 id="section4-2">4.2 功能优先级矩阵</h3>
+        <div class="table-wrapper">
+            <table>
+                <tr>
+                    <th>优先级</th>
+                    <th>功能</th>
+                    <th>价值</th>
+                    <th>成本</th>
+                    <th>说明</th>
+                </tr>
+                <tr style="background:#d4edda">
+                    <td rowspan="4"><strong>P0<br/>立即做</strong></td>
+                    <td>画布设计</td>
+                    <td>⭐⭐⭐⭐⭐</td>
+                    <td>⭐⭐⭐</td>
+                    <td>核心基础功能</td>
+                </tr>
+                <tr style="background:#d4edda">
+                    <td>标签组件</td>
+                    <td>⭐⭐⭐⭐⭐</td>
+                    <td>⭐⭐⭐⭐⭐</td>
+                    <td>最常用组件，实现简单</td>
+                </tr>
+                <tr style="background:#d4edda">
+                    <td>条码/二维码组件</td>
+                    <td>⭐⭐⭐⭐</td>
+                    <td>⭐⭐⭐⭐</td>
+                    <td>物流场景刚需</td>
+                </tr>
+                <tr style="background:#d4edda">
+                    <td>JSON导出</td>
+                    <td>⭐⭐⭐⭐⭐</td>
+                    <td>⭐⭐⭐⭐⭐</td>
+                    <td>与后端集成关键</td>
+                </tr>
+                <tr style="background:#fff3cd">
+                    <td rowspan="3"><strong>P1<br/>接下来</strong></td>
+                    <td>表格组件</td>
+                    <td>⭐⭐⭐⭐⭐</td>
+                    <td>⭐⭐⭐</td>
+                    <td>复杂，但核心功能</td>
+                </tr>
+                <tr style="background:#fff3cd">
+                    <td>数据绑定</td>
+                    <td>⭐⭐⭐⭐⭐</td>
+                    <td>⭐⭐⭐⭐</td>
+                    <td>重要交互功能</td>
+                </tr>
+                <tr style="background:#fff3cd">
+                    <td>模板管理</td>
+                    <td>⭐⭐⭐⭐</td>
+                    <td>⭐⭐⭐⭐</td>
+                    <td>提升用户体验</td>
+                </tr>
+                <tr style="background:#d1ecf1">
+                    <td rowspan="2"><strong>P2<br/>规划做</strong></td>
+                    <td>多表头表格</td>
+                    <td>⭐⭐⭐</td>
+                    <td>⭐⭐</td>
+                    <td>中国式报表特色</td>
+                </tr>
+                <tr style="background:#d1ecf1">
+                    <td>PDF导出</td>
+                    <td>⭐⭐⭐</td>
+                    <td>⭐⭐⭐</td>
+                    <td>备选输出格式</td>
+                </tr>
+                <tr style="background:#f8d7da">
+                    <td><strong>P3<br/>暂不做</strong></td>
+                    <td>协作编辑</td>
+                    <td>⭐⭐</td>
+                    <td>⭐⭐</td>
+                    <td>成本高，优先级低</td>
+                </tr>
+            </table>
+        </div>
+
+        <h2 id="section5">5. 非功能需求</h2>
+        
+        <h3 id="section5-1">5.1 性能需求</h3>
+        <div class="table-wrapper">
+            <table>
+                <tr><th>指标</th><th>要求</th><th>测量条件</th></tr>
+                <tr><td>页面首次加载时间</td><td>&lt; 1.5 秒</td><td>首次访问</td></tr>
+                <tr><td>组件拖拽响应</td><td>流畅，无明显延迟</td><td>同时拖拽 50 个组件</td></tr>
+                <tr><td>JSON 导出时间</td><td>&lt; 1 秒</td><td>100 个组件</td></tr>
+                <tr><td>表格数据承载</td><td>1000 行明细数据</td><td>不卡顿</td></tr>
+            </table>
+        </div>
+
+        <h2 id="section6">6. 技术规格</h2>
+
+        <h3 id="section6-1">6.1 系统架构</h3>
+        <div class="mermaid">
+graph TB
+    subgraph 表现层
+        A[设计器UI] --> B[组件库面板]
+        A --> C[属性面板]
+        A --> D[工具栏]
+    end
+    
+    subgraph 业务逻辑层
+        E[组件管理器] --> F[数据绑定器]
+        E --> G[配置管理器]
+        E --> H[历史记录]
+    end
+    
+    subgraph 核心引擎层
+        I[Fabric.js画布] --> J[自研组件库]
+        I --> K[渲染引擎]
+        I --> L[导出器]
+    end
+    
+    subgraph 数据层
+        M[headerData] --> N[数据绑定器]
+        O[Datas] --> N
+        P[footerData] --> N
+    end
+    
+    subgraph 自研组件库
+        J --> J1[标签组件]
+        J --> J2[条码组件]
+        J --> J3[二维码组件]
+        J --> J4[表格组件]
+    end
+    
+    A --> E
+    E --> I
+    N --> G
+    G --> K
+    G --> L
+    
+    style A fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    style E fill:#f3e5f5,stroke:#6a1b9a,stroke-width:2px
+    style I fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    style J fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+        </div>
+
+        <h3>6.2 数据流时序图</h3>
+        <div class="mermaid">
+sequenceDiagram
+    participant User as 用户
+    participant UI as 设计器UI
+    participant CM as 组件管理器
+    participant FB as Fabric.js
+    participant DB as 数据绑定器
+    participant Config as 配置管理器
+    
+    User->>UI: 拖拽组件到画布
+    UI->>CM: 创建组件请求
+    CM->>FB: 在画布上渲染
+    FB-->>CM: 返回组件对象
+    CM-->>UI: 更新界面
+    
+    User->>UI: 配置数据绑定
+    UI->>DB: 绑定字段
+    DB->>Config: 更新配置
+    
+    User->>UI: 导出JSON
+    UI->>Config: 获取配置
+    Config-->>UI: 返回JSON
+    UI-->>User: 下载文件
+        </div>
+
+        <h3>6.3 数据模型</h3>
+        <div class="mermaid">
+erDiagram
+    REPORT_CONFIG ||--o{ REPORT_COMPONENT : contains
+    REPORT_CONFIG ||--o{ TEMPLATE : uses
+    REPORT_COMPONENT ||--o| DATA_BINDING : has
+    
+    REPORT_CONFIG {
+        string id PK
+        string version
+        string name
+        string type
+        number width
+        number height
+        object header
+        object detail
+        object footer
+        array components
+    }
+    
+    REPORT_COMPONENT {
+        string id PK
+        string type
+        string name
+        string section
+        number x
+        number y
+        number width
+        number height
+        object style
+        object props
+    }
+    
+    DATA_BINDING {
+        string dataSource
+        string field
+        string format
+        string template
+    }
+    
+    TEMPLATE {
+        string id PK
+        string name
+        string category
+        object config
+        boolean isBuiltin
+    }
+        </div>
+
+        <h3>6.4 技术栈</h3>
+        <div class="table-wrapper">
+            <table>
+                <tr><th>层级</th><th>技术选型</th><th>版本</th></tr>
+                <tr><td>构建工具</td><td>Vite</td><td>5+</td></tr>
+                <tr><td>前端框架</td><td>Vue</td><td>3.5+</td></tr>
+                <tr><td>开发语言</td><td>TypeScript</td><td>5+</td></tr>
+                <tr><td>状态管理</td><td>Pinia</td><td>2+</td></tr>
+                <tr><td>画布引擎</td><td>Fabric.js</td><td>6+</td></tr>
+                <tr><td>UI 组件库</td><td>Element Plus</td><td>2+</td></tr>
+            </table>
+        </div>
+
+        <h2 id="section7">7. UI/UX 设计</h2>
+        
+        <h3>7.1 设计原则</h3>
+        <ol>
+            <li><strong>简洁高效</strong> - 界面布局清晰，减少认知负担</li>
+            <li><strong>所见即所得</strong> - 设计效果与打印效果一致</li>
+            <li><strong>操作直观</strong> - 拖拽自然，属性配置即时反馈</li>
+            <li><strong>区域分明</strong> - 清晰区分页眉/明细/页脚三大区域</li>
+        </ol>
+
+        <h3 id="section7-2">7.2 界面布局</h3>
+        
+        <div style="background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%); border-radius: 12px; padding: 20px; overflow-x: auto; cursor: zoom-in; box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);" onclick="openAsciiModal(this)">
+        <pre style="background: transparent; color: #2d3748; font-family: 'JetBrains Mono', 'Consolas', monospace; font-size: 12px; line-height: 1.6; margin: 0;">
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ 🔧 顶部工具栏 (Toolbar)                                                       │
+│ [🆕 新建] [📂 打开] [💾 保存] [↩️ 撤销] [↪️ 重做] [👁️ 预览] [📤 导出] [🖨️ 打印]    │
+├──────────────┬────────────────────────────────────────────┬──────────────────┤
+│              │                                            │                  │
+│  📦 组件库    │              🎨 画布设计区                  │   ⚡ 属性面板     │
+│  (左侧面板)   │              (中间主区域)                   │   (右侧面板)     │
+│              │                                            │                  │
+│  ┌──────────┐│  ┌──────────────────────────────────────┐  │  ┌────────────┐  │
+│  │ 🏷️ 文本标签││  │ 📄 页眉区域 (Header)                  │  │  │ 📐 位置与大小 │  │
+│  │ 📊 条形码  ││  │  订单号: SO2024001  日期: 2026-05-09  │  │  │  X: 120px   │  │
+│  │ 🔲 二维码  ││  └──────────────────────────────────────┘  │  │  Y: 80px    │  │
+│  │ 📋 数据表格││                                            │  │  W: 200px   │  │
+│  │ 📐 矩形框  ││  ┌──────────────────────────────────────┐  │  │  H: 40px    │  │
+│  │ 🖼️ 图片   ││  │ 📑 明细区域 (Detail) - 循环渲染        │  │  └────────────┘  │
+│  └──────────┘│  │  ┌─────┬────┬────┬────┬───────┬─────┐  │  │                  │
+│              │  │  │产品名│规格│数量│单价│ 金额  │备注 │  │  │  🔗 数据绑定    │  │
+│              │  │  ├─────┼────┼────┼────┼───────┼─────┤  │  │  ├────────────┤  │
+│              │  │  │产品A │ 个 │ 10 │100 │ 1000  │     │  │  │  数据源:       │  │
+│              │  │  │产品B │ 箱 │  5 │200 │ 1000  │     │  │  │  headerData   │  │
+│              │  │  └─────┴────┴────┴────┴───────┴─────┘  │  │  绑定字段:      │  │
+│              │  └──────────────────────────────────────┘  │  │  orderNo      │  │
+│              │                                            │  │                  │
+│              │  ┌──────────────────────────────────────┐  │  │  🎨 样式设置    │  │
+│              │  │ 📃 页脚区域 (Footer)                  │  │  │  ├────────────┤  │
+│              │  │  合计: ¥2000    制单人: 张三 [二维码]  │  │  │  字体: 微软雅黑│  │
+│              │  └──────────────────────────────────────┘  │  │  字号: 14px   │  │
+│              │                                            │  │  颜色: #333   │  │
+│              │           📄 A4 纸张 (210×297mm)          │  │  └────────────┘  │
+│              │                                            │  │                  │
+├──────────────┴────────────────────────────────────────────┴──────────────────┤
+│ 📊 底部状态栏 (StatusBar)                                                     │
+│ ✅ 就绪  │  组件数: 18  │  💾 已保存  │  🕐 2026-05-09 14:35:20              │
+└──────────────────────────────────────────────────────────────────────────────┘
+        </pre>
+        </div>
+        <p style="text-align: center; font-size: 12px; color: #718096; margin-top: 10px;">👆 点击布局图可放大查看</p>
+
+        <h4>布局说明</h4>
+        <div class="table-wrapper">
+            <table>
+                <tr><th>区域</th><th>位置</th><th>尺寸</th><th>功能说明</th></tr>
+                <tr><td><strong>顶部工具栏</strong></td><td>最顶部</td><td>高 48px</td><td>文件操作、撤销重做、预览导出</td></tr>
+                <tr><td><strong>左侧组件库</strong></td><td>左侧</td><td>宽 240px</td><td>提供可拖拽的组件</td></tr>
+                <tr><td><strong>中间画布区</strong></td><td>中央</td><td>自适应</td><td>可视化设计，含页眉/明细/页脚</td></tr>
+                <tr><td><strong>右侧属性面板</strong></td><td>右侧</td><td>宽 320px</td><td>配置组件属性、数据绑定</td></tr>
+                <tr><td><strong>底部状态栏</strong></td><td>最底部</td><td>高 28px</td><td>显示状态、组件数、保存状态</td></tr>
+            </table>
+        </div>
+
+        <h2 id="section8">8. 风险分析</h2>
+        
+        <h3 id="section8-1">8.1 技术风险</h3>
+        <div class="table-wrapper">
+            <table>
+                <tr><th>风险</th><th>可能性</th><th>影响</th><th>缓解措施</th></tr>
+                <tr><td>Fabric.js 与 Vue 3.5 集成问题</td><td>中</td><td>高</td><td>技术预研和 POC 验证</td></tr>
+                <tr><td>表格组件多表头+合并实现复杂</td><td>高</td><td>高</td><td>分阶段实现，先基础表格</td></tr>
+                <tr><td>浏览器打印兼容性问题</td><td>中</td><td>高</td><td>充分测试主流浏览器</td></tr>
+            </table>
+        </div>
+
+        <h2 id="section9">9. 项目规划</h2>
+
+        <h3>9.1 甘特图</h3>
+        <div class="mermaid">
+gantt
+    title 中国式打印报表设计器开发计划
+    dateFormat  YYYY-MM-DD
+    axisFormat  %m/%d
+    
+    section M1: 基础框架
+    项目初始化          :done, m1_1, 2026-05-15, 3d
+    Fabric.js集成       :done, m1_2, after m1_1, 4d
+    基础UI布局          :done, m1_3, after m1_2, 4d
+    组件库架构          :done, m1_4, after m1_3, 3d
+    
+    section M2: 核心功能
+    画布设计功能        :active, m2_1, after m1_4, 7d
+    标签组件开发        :m2_2, after m2_1, 4d
+    条码组件开发        :m2_3, after m2_2, 4d
+    二维码组件开发      :m2_4, after m2_3, 4d
+    基础表格组件        :m2_5, after m2_4, 5d
+    
+    section M3: 数据与导出
+    数据绑定系统        :m3_1, after m2_5, 5d
+    JSON导出功能        :m3_2, after m3_1, 3d
+    JSON导入功能        :m3_3, after m3_2, 3d
+    预览功能            :m3_4, after m3_3, 3d
+    
+    section M4: 高级功能
+    多表头表格          :m4_1, after m3_4, 5d
+    单元格合并          :m4_2, after m4_1, 3d
+    模板管理系统        :m4_3, after m4_2, 4d
+    打印功能            :m4_4, after m4_3, 4d
+    
+    section M5: 测试发布
+    功能测试            :m5_1, after m4_4, 5d
+    性能优化            :m5_2, after m5_1, 3d
+    文档编写            :m5_3, after m5_2, 3d
+    正式发布            :milestone, m5_4, after m5_3, 0d
+        </div>
+
+        <h3 id="section9-2">9.2 资源需求</h3>
+        <div class="table-wrapper">
+            <table>
+                <tr><th>角色</th><th>人数</th><th>职责</th></tr>
+                <tr><td>产品经理</td><td>1</td><td>需求定义、项目管理</td></tr>
+                <tr><td>前端技术负责人</td><td>1</td><td>架构设计、技术决策</td></tr>
+                <tr><td>高级前端开发</td><td>2</td><td>核心功能开发</td></tr>
+                <tr><td>UI 设计师</td><td>0.5</td><td>界面设计（兼职）</td></tr>
+                <tr><td>QA 工程师</td><td>1</td><td>测试质量保证（兼职）</td></tr>
+            </table>
+        </div>
+
+        <h2 id="section10">10. 附录</h2>
+        
+        <h3 id="section10-1">10.1 术语表</h3>
+        <div class="table-wrapper">
+            <table>
+                <tr><th>术语</th><th>解释</th></tr>
+                <tr><td>headerData</td><td>页眉区域数据，包含单据头部信息</td></tr>
+                <tr><td>Datas</td><td>明细区域数据，数组格式，支持循环渲染</td></tr>
+                <tr><td>footerData</td><td>页脚区域数据，包含合计和备注信息</td></tr>
+                <tr><td>Fabric.js</td><td>强大的 Canvas 交互库</td></tr>
+                <tr><td>数据绑定</td><td>将报表组件与数据字段关联</td></tr>
+            </table>
+        </div>
+
+        <h3>10.2 参考资料</h3>
+        <ul>
+            <li>Vue 3.5 官方文档: https://vuejs.org/</li>
+            <li>Fabric.js 官方文档: http://fabricjs.com/</li>
+            <li>Pinia 官方文档: https://pinia.vuejs.org/</li>
+        </ul>
+
+        <hr>
+        <p><em>本文档使用 PRD Generator Skill 生成 | 最后更新: 2026-05-09</em></p>
+    </main>
+</div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            securityLevel: 'loose',
+            gantt: {
+                titleTopMargin: 25,
+                barHeight: 20,
+                barGap: 4,
+                topPadding: 50,
+                leftPadding: 75
+            }
+        });
+
+        // Mermaid 图表点击放大功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 等待 Mermaid 渲染完成
+            setTimeout(function() {
+                const mermaidDivs = document.querySelectorAll('.mermaid');
+                mermaidDivs.forEach(function(div) {
+                    div.addEventListener('click', function() {
+                        openMermaidModal(this);
+                    });
+                    
+                    // 添加提示文字
+                    const hint = document.createElement('div');
+                    hint.className = 'mermaid-hint';
+                    hint.textContent = '👆 点击放大查看';
+                    div.appendChild(hint);
+                });
+            }, 1000);
+        });
+
+        // ASCII 布局图放大功能
+        function openAsciiModal(element) {
+            const modal = document.getElementById('mermaidModal');
+            const modalBody = document.getElementById('mermaidModalBody');
+            const pre = element.querySelector('pre');
+            
+            if (pre) {
+                const clonedPre = pre.cloneNode(true);
+                clonedPre.style.fontSize = '14px';
+                clonedPre.style.background = '#f5f5f5';
+                clonedPre.style.color = '#333';
+                clonedPre.style.padding = '24px';
+                clonedPre.style.minWidth = '800px';
+                modalBody.innerHTML = '';
+                modalBody.appendChild(clonedPre);
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function openMermaidModal(mermaidDiv) {
+            const modal = document.getElementById('mermaidModal');
+            const modalBody = document.getElementById('mermaidModalBody');
+            const svg = mermaidDiv.querySelector('svg');
+            
+            if (svg) {
+                // 克隆 SVG 到模态框
+                const clonedSvg = svg.cloneNode(true);
+                clonedSvg.style.width = 'auto';
+                clonedSvg.style.height = 'auto';
+                clonedSvg.style.minWidth = '600px';
+                modalBody.innerHTML = '';
+                modalBody.appendChild(clonedSvg);
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMermaidModal() {
+            const modal = document.getElementById('mermaidModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // 点击模态框背景关闭
+        document.getElementById('mermaidModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeMermaidModal();
+            }
+        });
+
+        // ESC 键关闭模态框
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMermaidModal();
+            }
+        });
+    </script>
+</body>
+</html>
