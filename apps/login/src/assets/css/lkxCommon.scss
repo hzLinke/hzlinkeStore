@@ -1,0 +1,36 @@
+/*内容不可选*/
+
+* {
+    -moz-user-select: -moz-none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+/* 通用*/
+
+$basic-bg-color:LightSeaGreen;
+$basic-color:#000;
+$active-bg-color:blue;
+$active-color:white;
+$hover-bg-color:rgb(45, 78, 139);
+$hover-font-color:white;
+$font-size:14px;
+
+/*表格*/
+
+$table-fixed-basic-color: #eee;
+$table-line-color: rgb(223, 204, 204);
+$table-row-height: 7mm;
+
+/* 文本溢出隐藏 */
+
+.lkx-ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

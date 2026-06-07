@@ -1,0 +1,359 @@
+{
+  "id": "2040954",
+  "name": "Linke_Dis_System",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "29044415",
+      "name": "basic_cate",
+      "font_class": "basic_cate",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "13972288",
+      "name": "成果转化",
+      "font_class": "chengguozhuanhua",
+      "unicode": "e658",
+      "unicode_decimal": 58968
+    },
+    {
+      "icon_id": "52723",
+      "name": "收益转化",
+      "font_class": "IntegralConvert",
+      "unicode": "e632",
+      "unicode_decimal": 58930
+    },
+    {
+      "icon_id": "1276831",
+      "name": "消息",
+      "font_class": "Message1",
+      "unicode": "e67b",
+      "unicode_decimal": 59003
+    },
+    {
+      "icon_id": "9297201",
+      "name": "积分",
+      "font_class": "Integral",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "12686944",
+      "name": "交换",
+      "font_class": "Swap",
+      "unicode": "e655",
+      "unicode_decimal": 58965
+    },
+    {
+      "icon_id": "9902643",
+      "name": "优惠券",
+      "font_class": "Coupon",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "14164162",
+      "name": "银行",
+      "font_class": "Bank",
+      "unicode": "e67a",
+      "unicode_decimal": 59002
+    },
+    {
+      "icon_id": "295715",
+      "name": "门店名称",
+      "font_class": "StoreName",
+      "unicode": "e61f",
+      "unicode_decimal": 58911
+    },
+    {
+      "icon_id": "5238520",
+      "name": "银行卡",
+      "font_class": "BankCard",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
+      "icon_id": "1256459",
+      "name": "个人信息 ",
+      "font_class": "Person",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "9041965",
+      "name": "版本",
+      "font_class": "Version",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "13636967",
+      "name": "关联",
+      "font_class": "Link",
+      "unicode": "e64d",
+      "unicode_decimal": 58957
+    },
+    {
+      "icon_id": "634046",
+      "name": "电话",
+      "font_class": "Phone",
+      "unicode": "e66f",
+      "unicode_decimal": 58991
+    },
+    {
+      "icon_id": "838817",
+      "name": "特卖",
+      "font_class": "Slae",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "12687057",
+      "name": "信息",
+      "font_class": "Message",
+      "unicode": "e65b",
+      "unicode_decimal": 58971
+    },
+    {
+      "icon_id": "1219104",
+      "name": "分期-我-待发货",
+      "font_class": "WaitOut",
+      "unicode": "e6c2",
+      "unicode_decimal": 59074
+    },
+    {
+      "icon_id": "14015795",
+      "name": "-_授权管理",
+      "font_class": "Authorization",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "689262",
+      "name": "类目 品类 分类 类别",
+      "font_class": "Cate",
+      "unicode": "e7f9",
+      "unicode_decimal": 59385
+    },
+    {
+      "icon_id": "633014",
+      "name": "微信支付",
+      "font_class": "WxPay",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "1242176",
+      "name": "支付宝支付",
+      "font_class": "AliPay",
+      "unicode": "e65e",
+      "unicode_decimal": 58974
+    },
+    {
+      "icon_id": "2681724",
+      "name": "余额支付",
+      "font_class": "PalancePay",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "9826666",
+      "name": "成功",
+      "font_class": "PayOk",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "2967038",
+      "name": "操作-退格",
+      "font_class": "BackSpace",
+      "unicode": "e714",
+      "unicode_decimal": 59156
+    },
+    {
+      "icon_id": "554022",
+      "name": "删除",
+      "font_class": "Del",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "5727483",
+      "name": "选择",
+      "font_class": "Check1",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "1177751",
+      "name": "选择 (1)",
+      "font_class": "Check",
+      "unicode": "e63a",
+      "unicode_decimal": 58938
+    },
+    {
+      "icon_id": "4328044",
+      "name": "收藏",
+      "font_class": "Collection",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "9809642",
+      "name": "首页",
+      "font_class": "Home",
+      "unicode": "e659",
+      "unicode_decimal": 58969
+    },
+    {
+      "icon_id": "10026290",
+      "name": "购物车",
+      "font_class": "Cart",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "2681694",
+      "name": "减号",
+      "font_class": "Dec",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "765355",
+      "name": "待发货",
+      "font_class": "WaitOut1",
+      "unicode": "e684",
+      "unicode_decimal": 59012
+    },
+    {
+      "icon_id": "1111360",
+      "name": "编辑",
+      "font_class": "Edit",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    },
+    {
+      "icon_id": "1348240",
+      "name": "删除",
+      "font_class": "Delete",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "5485690",
+      "name": "增加",
+      "font_class": "Plus",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "36110",
+      "name": "导航",
+      "font_class": "Nav",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "588769",
+      "name": "待付款",
+      "font_class": "waitPay",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "683398",
+      "name": "充值",
+      "font_class": "Recharge",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "706853",
+      "name": "客服",
+      "font_class": "Service",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "995977",
+      "name": "设置",
+      "font_class": "set",
+      "unicode": "e667",
+      "unicode_decimal": 58983
+    },
+    {
+      "icon_id": "1263268",
+      "name": "团队",
+      "font_class": "Team",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "1526310",
+      "name": "二维码",
+      "font_class": "QrCode",
+      "unicode": "e65f",
+      "unicode_decimal": 58975
+    },
+    {
+      "icon_id": "2507445",
+      "name": "左",
+      "font_class": "Left",
+      "unicode": "e64a",
+      "unicode_decimal": 58954
+    },
+    {
+      "icon_id": "3670110",
+      "name": "待收货",
+      "font_class": "WaitIn",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "5391222",
+      "name": "售后",
+      "font_class": "AflterSale",
+      "unicode": "e70b",
+      "unicode_decimal": 59147
+    },
+    {
+      "icon_id": "6119209",
+      "name": "下",
+      "font_class": "Down",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
+      "icon_id": "6171698",
+      "name": "地址",
+      "font_class": "Address",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "9029220",
+      "name": "全部订单",
+      "font_class": "AllOrder",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "16918732",
+      "name": "左",
+      "font_class": "Right",
+      "unicode": "e788",
+      "unicode_decimal": 59272
+    },
+    {
+      "icon_id": "16918733",
+      "name": "下",
+      "font_class": "Up",
+      "unicode": "e789",
+      "unicode_decimal": 59273
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+USE [LinkeDisV4]
+GO
+
+/****** Object:  View [dbo].[V_Bill_Sales_Tab]    Script Date: 2026-03-30 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER VIEW [dbo].[V_Bill_Sales_Tab]
+AS
+/**
+    销售明细表（包括扩展表）
+**/
+WITH OrderInfo AS (
+    SELECT BillNumber, OrderBillNumber, Note AS OrderNote
+    FROM L_Bill_Sale_Tab
+)
+SELECT a.Idkey, 
+       a.billnumber,
+       a.customerOrderId, 
+       a.OrderIdKey,
+       o.OrderBillNumber,
+       o.OrderNote,
+       a.CustomerCode, 
+       c.Pcode,
+       a.ProductCode, 
+       a.DoubleNumBase,
+       a.DoubleNumExBase,
+       a.PackBase,
+       a.DownUnit,
+       a.DownWg,
+       a.SaleType,
+       a.DownUnitType,
+       a.num, 
+       a.numEx,
+       (a.numEx - a.replaceNumEx) * CASE WHEN a.SaleType = 3 THEN p.Pack ELSE CASE WHEN a.SaleType = 4 THEN 2 ELSE 1 END END AS ExChangeNumEx,
+       p.Weight,
+       a.NumEx * p.Weight AS TotalWeight,
+       a.basePrice,
+       a.curSalePrice,
+       a.costprice, 
+       ROUND(a.salePrice, 2) AS SalePrice, 
+       c.Dr * 100 AS dr,
+       ROUND(a.salePrice / c.Dr, 2) AS CurDrSalePrice,
+       a.examineUserCode, 
+       a.At, 
+       a.EntryUserCode,
+       a.EntryAt,
+       a.DeliveryAt, 
+       a.Status, 
+       a.Note, 
+       a.detailNote,
+       a.lossNote,
+       p.BarCode, 
+       p.SelfCode, 
+       p.IdCode, 
+       p.PymCode, 
+       CASE WHEN d.AliasName IS NULL THEN p.Name ELSE d.AliasName END AS Name,
+       CASE WHEN d.AliasName IS NULL THEN p.IdCode ELSE d.CustomerProcudeCode END AS CustomerProcudeCode,
+       p.Spec,
+       p.Name + p.Spec AS ng, 
+       CASE WHEN a.SaleType = 3 THEN p.PUnit ELSE CASE WHEN a.SaleType = 4 OR a.SaleType = 2 THEN c.DownUnit ELSE p.Unit END END AS Unit,
+       p.PUnit,
+       p.inPrice, 
+       p.PicSrc, 
+       a.OrderNum, 
+       a.MchCode, 
+       a.StoreCode, 
+       a.AreaCode, 
+       p.Brand, 
+       p.Origin, 
+       a.Pack, 
+       a.StockNum, 
+       p.Price2, 
+       p.price3, 
+       p.Price4, 
+       p.price5, 
+       a.BillType, 
+       a.Profit, 
+       a.ActualCostPrice, 
+       a.ShipperCode, 
+       a.BatchNumber, 
+       a.BoxNum, 
+       a.DispNum,
+       a.DisTributionNum,
+       a.DisTributionAt,
+       a.DisTributionChecked, 
+       a.DisTributionUserCode,
+       a.BoxPrice, 
+       a.CheckReportsFileNames,
+       a.CheckReportsAsCode,
+       p.CateCode,
+       a.replaceNumEx,
+       a.DisTributionStatus,
+       e.name AS CateName,
+       a.PlaceholderNote,
+       p.CheckNote
+FROM (
+    SELECT * FROM L_Bill_Sales_Tab#
+    UNION ALL
+    SELECT * FROM L_Bill_Sales_Tab
+) a 
+LEFT JOIN OrderInfo o ON a.BillNumber = o.BillNumber
+LEFT JOIN L_Basic_Product_Tab p ON a.ProductCode = p.IdCode
+LEFT JOIN V_Basic_Customer_Tab c ON a.CustomerCode = c.idcode
+LEFT JOIN L_Basic_Customer_Price_Tab d ON d.PCode = dbo.[F_GetPriceCode](a.CustomerCode) 
+                                      AND d.ProductCode = a.ProductCode 
+                                      AND d.SaleType = a.SaleType
+LEFT JOIN L_Basic_Cate_Tab e ON e.idCode = p.CateCode
+GO
+
+

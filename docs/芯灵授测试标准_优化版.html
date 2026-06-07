@@ -1,0 +1,596 @@
+<!DOCTYPE html><html><head>
+      <title>芯灵授测试标准_优化版</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\Administrator\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.26\crossnote\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-details{margin:0;padding:0;border:none}.markdown-preview .md-toc summary.md-toc-link-wrapper{cursor:pointer;list-style-position:outside}.markdown-preview .md-toc summary.md-toc-link-wrapper::marker{font-size:.85em}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.markdown-preview .md-toc .md-toc-link-wrapper[data-level='0']{margin-left:12px}.markdown-preview .md-toc .md-toc-link-wrapper[data-level='1']{margin-left:28px}.markdown-preview .md-toc .md-toc-link-wrapper[data-level='2']{margin-left:44px}.markdown-preview .md-toc .md-toc-link-wrapper[data-level='3']{margin-left:60px}.markdown-preview .md-toc .md-toc-link-wrapper[data-level='4']{margin-left:76px}.markdown-preview .md-toc .md-toc-link-wrapper[data-level='5']{margin-left:80px}.markdown-preview a.tag,.markdown-preview a.tag:active,.markdown-preview a.tag:link,.markdown-preview a.tag:visited,.markdown-preview span.tag:not(.token){display:inline-block;background-color:var(--vscode-badge-background,rgba(127,127,127,.18));color:var(--vscode-badge-foreground,currentColor);border-radius:2em;font-size:.85em;font-weight:500;padding:.05em .55em;line-height:1.5;white-space:nowrap;text-decoration:none;text-shadow:none;box-shadow:none;transition:background-color .12s ease,opacity .12s ease}.markdown-preview a.tag{cursor:pointer}.markdown-preview a.tag:focus,.markdown-preview a.tag:hover{background-color:var(--vscode-badge-background,rgba(127,127,127,.32));color:var(--vscode-badge-foreground,currentColor);opacity:.85;text-decoration:none;outline:0}.markdown-preview .wikilink-embed-content{border-left:3px solid var(--vscode-textBlockQuote-border,rgba(128,128,128,.3));background:var(--vscode-textBlockQuote-background,rgba(128,128,128,.05));margin:.5em 0;padding:.5em .75em;border-radius:0 3px 3px 0}.markdown-preview .wikilink-embed-content.wikilink-embed-error{border-left-color:var(--vscode-errorForeground,#cf222e);color:var(--vscode-errorForeground,#cf222e);font-style:italic;opacity:.8}.markdown-preview .wikilink-embed-content h1:first-child,.markdown-preview .wikilink-embed-content h2:first-child,.markdown-preview .wikilink-embed-content h3:first-child,.markdown-preview .wikilink-embed-content h4:first-child,.markdown-preview .wikilink-embed-content h5:first-child,.markdown-preview .wikilink-embed-content h6:first-child{margin-top:.25em}.markdown-preview .wikilink-embed-content .wikilink-embed-content{margin:.25em 0;padding:.25em .5em}.markdown-preview .block-id{display:none}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-details{margin:0;padding:0;border:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper[data-level='0']{padding-left:0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper[data-level='1']{padding-left:16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper[data-level='2']{padding-left:32px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper[data-level='3']{padding-left:48px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper[data-level='4']{padding-left:64px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper[data-level='5']{padding-left:80px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script>
+    </head>
+    <body for="html-export">
+      <div class="crossnote markdown-preview  ">
+      <div>
+<h1 id="芯灵授测试标准">芯灵授测试标准 </h1>
+<blockquote>
+<p>文档版本：V1.0<br>
+最后更新：2026年5月21日</p>
+</blockquote>
+<hr>
+<h2 id="目录">目录 </h2>
+<ul>
+<li><a href="#1-%E5%95%86%E5%93%81%E8%B5%84%E6%96%99">1. 商品资料</a></li>
+<li><a href="#2-%E5%AE%A2%E6%88%B7%E8%B5%84%E6%96%99">2. 客户资料</a></li>
+<li><a href="#3-%E6%8A%A5%E4%BB%B7%E5%8D%95">3. 报价单</a></li>
+<li><a href="#4-%E5%AE%A2%E6%88%B7%E8%AE%A2%E5%8D%95">4. 客户订单</a></li>
+<li><a href="#5-%E5%AE%A2%E6%88%B7%E5%8A%A0%E5%8D%95">5. 客户加单</a></li>
+<li><a href="#6-%E9%87%87%E8%B4%AD%E6%B1%87%E6%80%BB">6. 采购汇总</a></li>
+<li><a href="#7-%E4%B8%8B%E5%8D%95%E6%B1%87%E6%80%BB%E9%87%87%E8%B4%AD%E8%AE%A2%E5%8D%95">7. 下单汇总（采购订单）</a></li>
+<li><a href="#8-%E9%87%87%E8%B4%AD%E6%94%B6%E8%B4%A7">8. 采购收货</a></li>
+<li><a href="#9-%E9%85%8D%E8%B4%A7">9. 配货</a></li>
+<li><a href="#10-%E5%BA%93%E5%AD%98%E6%B8%85%E7%82%B9">10. 库存清点</a></li>
+</ul>
+<hr>
+<h2 id="1-商品资料">1. 商品资料 </h2>
+<h3 id="11-分类">1.1 分类 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 用以区分商品，报价中批量调整价格，检测报告批量上传</li>
+</ul>
+<h3 id="12-商品类型">1.2 商品类型 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>0</strong> - 称重</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>1</strong> - 按量</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>2</strong> - 称重+按量（已取消）</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>3</strong> - 散+件（主要用于自动拆零，装数一定要设置）</li>
+</ul>
+<h3 id="13-多质量">1.3 多质量 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 用于启用质量级别，如果不开启所有业务单据不可改变质量级别（默认是标准）</li>
+</ul>
+<h3 id="14-供应商">1.4 供应商 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 用于设置商品的默认分流的供应商，优先级没有报价中设置的高（不定与自采时不会分流）</li>
+</ul>
+<h3 id="15-结算单位与下单单位">1.5 结算单位与下单单位 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 如果商品类型不是散+件，则结算单位与下单单位必须一致</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 如果是散+件，则结算单位与下单必须不一致，结算单位最小销售单位，下单单位用包装单位</li>
+</ul>
+<h3 id="16-上限-下限">1.6 上限、下限 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 用于控制满货与缺货的报表显示</li>
+</ul>
+<h3 id="17-最后平均价">1.7 最后平均价 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 最后审核收货单时计算出来的当日的平均进价</li>
+</ul>
+<h3 id="18-进价">1.8 进价 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 最后审核收货单时的商品进价</li>
+</ul>
+<h3 id="19-其它">1.9 其它... </h3>
+<hr>
+<h2 id="2-客户资料">2. 客户资料 </h2>
+<h3 id="21-放置区">2.1 放置区 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 用于供应商投框</li>
+</ul>
+<h3 id="22-简称">2.2 简称 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 用于订单、配货中显示的名称</li>
+</ul>
+<h3 id="23-关联公司">2.3 关联公司 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 用于关联打印据的格式</li>
+</ul>
+<h3 id="24-项目名称">2.4 项目名称 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 用于关联项目，主要简化报价操作，同一项目的客户用同一份报价</li>
+</ul>
+<h3 id="25-折扣率-小数位数">2.5 折扣率、小数位数 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>折扣率</strong>：用于计算客户的单价，折扣率是以小数输入，0.8 代表 8 折</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>小数位</strong>：用来控制客户的小数点位数，会自动四舍五入</li>
+</ul>
+<h3 id="26-计价单位">2.6 计价单位 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>0</strong> - 自动</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>1</strong> - KG（主要用于客户要求按 KG 下单的客户，下单后会转成市斤）</li>
+</ul>
+<h3 id="27-价格标准">2.7 价格标准 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>0</strong> - 时价
+<ul>
+<li>时价时会关联客户订单与送货单的价格（如果客户订单与送货单的价格改变会更新对应的报价表）</li>
+</ul>
+</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>1</strong> - 定价
+<ul>
+<li>定价客户以报价单的价格为准（客户订单与送货单的价格改变不会更新对应的报价表）</li>
+</ul>
+</li>
+</ul>
+<h3 id="28-只取报价">2.8 只取报价 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 没有报价的商品不可以销售</li>
+</ul>
+<h3 id="29-查看类型">2.9 查看类型 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 用于控制客户手机端的显示类型
+<ul>
+<li><strong>0</strong> - 全部</li>
+<li><strong>1</strong> - 报价（只显示有报价的商品）</li>
+</ul>
+</li>
+</ul>
+<h3 id="210-是否加价">2.10 是否加价 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 如果不加价，审核收货单后会将销售价与进价同步</li>
+</ul>
+<h3 id="211-质量">2.11 质量 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 用于控制对应客户的默认质量级别（优先级没有报价单中的质量级别高）</li>
+</ul>
+<h3 id="212-损耗分配">2.12 损耗分配 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 不分配时，损耗权重会取参数设置值默认是 10%，具体分配计算方式查看「损耗分配文档」</li>
+</ul>
+<h3 id="213-其它">2.13 其它... </h3>
+<hr>
+<h2 id="3-报价单">3. 报价单 </h2>
+<blockquote>
+<p>用于设置时段的价格，系统会以最后的报价单价格为准（就算过期也以最后一份为准），点击行数据时右上角会显示最近 3 次的采购价格</p>
+<p>审核时会更新对应时段对应客户送货单的价格（具体查看操作流程图）</p>
+</blockquote>
+<h3 id="31-质量">3.1 质量 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 这里设置的质量级别优先级最高</li>
+</ul>
+<h3 id="32-供货商">3.2 供货商 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 用于控制自动分流，这里设置的优先级最高</li>
+</ul>
+<h3 id="33-工具条">3.3 工具条 </h3>
+<h4 id="331-上传报价">3.3.1 上传报价 </h4>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 从 Excel 档导入报价，可以多个工作表导入，已有的商品会自动过滤</li>
+</ul>
+<p><strong>导入文件格式如下：</strong></p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>编码</th>
+<th>品名</th>
+<th>规格</th>
+<th>单位</th>
+<th>单价</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>10001</td>
+<td>大白菜</td>
+<td></td>
+<td>斤</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>10003</td>
+<td>牛油</td>
+<td></td>
+<td>斤</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<h4 id="332-调入商品">3.3.2 调入商品 </h4>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 按分类调入（如果报价单中有数据就没法调入）</li>
+</ul>
+<h4 id="333-复制报价">3.3.3 复制报价 </h4>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 从对应客户的报价表中导入报价（注意报价表与报价单是不一样的，如果报价单中有数据就没法调入）</li>
+</ul>
+<h4 id="334-批量货商">3.3.4 批量货商 </h4>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 按商品分类批量设置供货商</li>
+</ul>
+<h4 id="335-批量加价">3.3.5 批量加价 </h4>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 按商品分类批量设置报价（以最新进价为基准）</li>
+</ul>
+<h4 id="336-合并报价">3.3.6 合并报价 </h4>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 合并其它客户价格过来，已有的跳过（主要用于项目合并，其它的慎用）</li>
+</ul>
+<h3 id="34-其它">3.4 其它... </h3>
+<hr>
+<h2 id="4-客户订单">4. 客户订单 </h2>
+<h3 id="41-单价关联">4.1 单价关联 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 单价是否自动关联报价表价格</li>
+</ul>
+<h3 id="42-质量关联">4.2 质量关联 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 质量自动关联客户资料（报价）中设置的质量（报价优先，如果商品资料没有开启多质量不可以改变质量）</li>
+</ul>
+<h3 id="43-复制菜普">4.3 复制菜普 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 复制菜普时是否自动关联报价表价格</li>
+</ul>
+<h3 id="44-自动分流">4.4 自动分流 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 审核是否可以自动分流（商品资料（报价）供货商 &gt; 1 的商品，报价优先）
+<ul>
+<li><strong>4.4.1</strong> 分流后对应采购订单中的单价是否关联对应供货商的单价（非必要功能，商品资料要关联供货商的单价，预留实现）</li>
+</ul>
+</li>
+</ul>
+<h3 id="45-送货单生成">4.5 送货单生成 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 审核后是否自动生成对应的送货单（反签删除对应送货单）</li>
+</ul>
+<h3 id="46-代打处理">4.6 代打处理 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 审核后有代打的应采购数量是否扣除代打的数量<blockquote>
+<p>示例：大白菜结算量100，代打10，应采购数是90</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="47-撤销分流">4.7 撤销分流 </h3>
+<blockquote>
+<p>业务场景：客户订单审核后，可能要修改客户订单的数据（非必要不要这样操作，一般的操作可以在采购汇总、下单汇总中进行处理）</p>
+</blockquote>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>4.7.1</strong> 自动撤销免采的部分</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>4.7.2</strong> 限制有供应商接单提示，已配货提示</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>4.7.3</strong> 如果多采部分被使用，又撤销分流成功的话，结果数据会不正确
+<ul>
+<li><strong>4.7.3.1</strong> 这种情况会提示限制</li>
+<li><strong>4.7.3.2</strong> 正确的做法是要先将关联的订单先撤销，才能进行下去</li>
+<li><strong>4.7.3.3</strong> 如果免采是多采的数据，会回退成备用库存</li>
+</ul>
+</li>
+</ul>
+<h3 id="48-智能匹配">4.8 智能匹配 </h3>
+<blockquote>
+<p>用于快速进行复制录单（图片识别、文档识别需要付费开通API接口，预留实现）</p>
+</blockquote>
+<ul>
+<li class="task-list-item">
+<p><input type="checkbox" class="task-list-item-checkbox"> <strong>4.8.1</strong> 可以智能匹配</p>
+<blockquote>
+<p>输入数据：<code>大白菜10斤剥皮</code></p>
+<p>自动解析结果：</p>
+<ul>
+<li>品名：大白菜</li>
+<li>数量：10</li>
+<li>单位：斤</li>
+<li>做法：剥皮</li>
+</ul>
+</blockquote>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" class="task-list-item-checkbox"> <strong>4.8.2</strong> 会自动学习</p>
+<blockquote>
+<p>输入数据：<code>大白才10斤剥皮</code>（系统中没有"大白才"）</p>
+<p>经过学习后，下次再输入会解析出：</p>
+<ul>
+<li>品名：大白菜</li>
+<li>数量：10</li>
+<li>单位：斤</li>
+<li>做法：剥皮</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h2 id="5-客户加单">5. 客户加单 </h2>
+<h3 id="51-单价关联">5.1 单价关联 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 单价是否自动关联报价表价格</li>
+</ul>
+<h3 id="52-质量关联">5.2 质量关联 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 质量是否自动关联客户资料中设置的质量</li>
+</ul>
+<h3 id="53-复制菜普">5.3 复制菜普 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 复制菜普时是否自动关联报价表价格</li>
+</ul>
+<h3 id="54-自动分流">5.4 自动分流 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 审核是否可以自动分流（供货商 &gt; 1 的商品）</li>
+</ul>
+<h3 id="55-送货单处理">5.5 送货单处理 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 审核后是否自动生成对应的送货单或者合并到对应单据</li>
+</ul>
+<h3 id="56-代打处理">5.6 代打处理 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 审核后有代打的应采购收数量是否扣除</li>
+</ul>
+<hr>
+<h2 id="6-采购汇总">6. 采购汇总 </h2>
+<blockquote>
+<p><strong>可用库存计算公式</strong>：<code>可用库存 = 昨日余量 + 当日多采 - 已匹配的免采</code></p>
+</blockquote>
+<h3 id="61-修改数量">6.1 修改数量 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>6.1.1</strong> 是否可以修改对应订单的数量（代打的要加上）</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>6.1.2</strong> 是否可以修改对应送货单的数量（代打的要加上）<blockquote>
+<p>示例：单据中的原数据</p>
+<ul>
+<li>大白菜100斤，代打10斤</li>
+<li>修改为110斤，对应的订单结算量是120斤</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="62-换货">6.2 换货 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>6.2.1</strong> 相同商品是否有提示不能换</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>6.2.2</strong> 换货类型
+<ul>
+<li><strong>6.2.2.1</strong> 部分换货（不足部分保留）</li>
+<li><strong>6.2.2.2</strong> 全部换货（不足部分取消，预留实现）</li>
+<li><strong>6.2.2.3</strong> 换货成功后对应订单与送货单数据是否改变，是否有记录换货情况（点序号后面的 <code>&gt;</code> 头查看）</li>
+</ul>
+</li>
+</ul>
+<h3 id="63-取消只取消欠数的部份">6.3 取消（只取消欠数的部份） </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>6.3.1</strong> 是否可以撤销对应订单的数量</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>6.3.2</strong> 是否可以撤销对应送货单的数量</li>
+</ul>
+<h3 id="64-接单">6.4 接单 </h3>
+<blockquote>
+<p>将对应商品确定给供应商的过程，一般用于自采商品，会生成对应的采购订单（生成以供货商 + 操作人为条件生成）</p>
+</blockquote>
+<h4 id="641-免采">6.4.1 免采 </h4>
+<blockquote>
+<p>将对应商品绑定到现有库存，单价以库存成本为准</p>
+</blockquote>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>6.4.1.1</strong> 库存不足是没法进行</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>6.4.1.2</strong> 合并免采（按顺序分配可用库存）</li>
+</ul>
+<h4 id="642-单品下单">6.4.2 单品下单 </h4>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>6.4.2.1</strong> 可以多客户合并下单</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>6.4.2.2</strong> 可以修改单价同步到对应的采购订单</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>6.4.2.3</strong> 超过部分自动变成备用库存</li>
+</ul>
+<h4 id="643-批量下单">6.4.3 批量下单 </h4>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>6.4.3.1</strong> 按整个分类一次性下单，不可修改单价与数量</li>
+</ul>
+<hr>
+<h2 id="7-下单汇总采购订单">7. 下单汇总（采购订单） </h2>
+<blockquote>
+<p>就是采购订单的一种展示方式，操作比采购订单简单、直观、灵活</p>
+<p><strong>操作说明</strong>：</p>
+<ul>
+<li>双击明细列调出商品去向功能</li>
+<li>双击其它部分合并转供货商</li>
+</ul>
+</blockquote>
+<h3 id="71-商品去向">7.1 商品去向 </h3>
+<blockquote>
+<p><strong>备注</strong>：多采、免采的数据不可以修改，只可以删除</p>
+</blockquote>
+<h4 id="711-修改下单量">7.1.1 修改下单量 </h4>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.1.1.1</strong> 如果数量减少差额回退到采购汇总</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.1.1.2</strong> 如果数量增加差额只增加采购数是其它不变</li>
+</ul>
+<h4 id="712-修改单价-备注">7.1.2 修改单价、备注 </h4>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.1.2.1</strong> 可以同步到对应采购订单中（单价用平均算法）</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.1.2.2</strong> 修改单价同步到本次多采的行数据（非必须，预留实现）</li>
+</ul>
+<h4 id="713-修改质量">7.1.3 修改质量 </h4>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.1.3.1</strong> 同步到对应采购订单、对应客户订单、对应送货单中</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.1.3.2</strong> 可以同步到本次多采的行数据（非必须，预留实现）</li>
+</ul>
+<h4 id="714-删除">7.1.4 删除 </h4>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.1.4.1</strong> 非免采时全部退回采购汇总</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.1.4.2</strong> 免采直接删除，可用库存增加</li>
+</ul>
+<h4 id="715-转存">7.1.5 转存 </h4>
+<blockquote>
+<p>业务场景：客户取消订货但货已采回来</p>
+</blockquote>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.1.5.1</strong> 同步取消对应客户订单与送货单中的数量，如果全部转存删除客户订单与送货单中对应商品</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.1.5.2</strong> 可用库存增加</li>
+</ul>
+<h4 id="716-取消全部取消">7.1.6 取消（全部取消） </h4>
+<blockquote>
+<p>业务场景：客户取消订货，注意与转存的区别，注意与采购汇总中的功能有区别</p>
+</blockquote>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.1.6.1</strong> 取消后对应客户订单与送货单对应商品删除</li>
+</ul>
+<h4 id="717-转供货商">7.1.7 转供货商 </h4>
+<blockquote>
+<p>业务场景：</p>
+<ol>
+<li>供货商不匹配</li>
+<li>供货商价格不匹配</li>
+<li>供货商数量不匹配</li>
+<li>供货商质量不匹配</li>
+</ol>
+<p>可以部份数量转移，可以指定单价，注意与合并转供货商的区别</p>
+</blockquote>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.1.7.1</strong> 是否可以选择转供货商</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.1.7.2</strong> 是否可以自动关联选择供货商的单价（商品资料要关联供货商的单价）</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.1.7.3</strong> 是否可以选择转供货商的数量</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.1.7.4</strong> 是否可以选择转供货商的质量</li>
+</ul>
+<h4 id="718-换货">7.1.8 换货 </h4>
+<blockquote>
+<p>业务场景：</p>
+<ol>
+<li>商品不匹配</li>
+<li>商品价格不匹配</li>
+<li>客户要求</li>
+</ol>
+</blockquote>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.1.8.1</strong> 相同商品是否有提示不能换</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.1.8.2</strong> 是否可以选择换货类型
+<ul>
+<li><strong>7.1.8.2.1</strong> 部分换货（不足部分保留）</li>
+<li><strong>7.1.8.2.2</strong> 全部换货（不足部分取消，非必须，可以选部分换货，再取消，预留实现）</li>
+</ul>
+</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.1.8.3</strong> 换货成功后对应订单与送货单数据是否改变，是否有记录换货情况（点序号后面的 <code>&gt;</code> 头查看）</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.1.8.4</strong> 换货时如果供货商不匹配是否有提示（非必须，可以先换货，再转供应商，预留实现）</li>
+</ul>
+<h4 id="719-免采">7.1.9 免采 </h4>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.1.9.1</strong> 减少可用库存（可用库存 = 昨日余量 + 当日多采 - 已匹配的免采）</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.1.9.2</strong> 不可以免采自身生成的多采数量</li>
+</ul>
+<blockquote>
+<p><strong>解释如下</strong>：</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>大白菜 客户订单 30 斤 采购下单60斤 
+--&gt; 有30斤变会变成备注库存 
+--&gt; 此时会可用库存显示为30斤
+--&gt; 如再对此大白菜进行免采操作就会触发提示
+
+--&gt; 这个存货只能在后面下单的客户中使用
+</code></pre></blockquote>
+<h3 id="72-合并转供货商">7.2 合并转供货商 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.2.1</strong> 只可以修改单价，不可以修改数量</li>
+</ul>
+<h3 id="73-发布订单">7.3 发布订单 </h3>
+<blockquote>
+<p>将对应的采购下货单进行审核，反签操作</p>
+</blockquote>
+<h4 id="731-发布状态">7.3.1 发布状态 </h4>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.3.1.1</strong> 发布后商品去向中的数据不可以改变</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.3.1.2</strong> 发布后合并转货商不能使用</li>
+</ul>
+<h4 id="732-二维码">7.3.2 二维码 </h4>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.3.2.1</strong> 发布后二维码可以截图发出（注商品顺序是否有问题）</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.3.2.2</strong> 发布后注意收货单中的商品顺序是否与订单一致，便于与供应商单据对应</li>
+</ul>
+<h4 id="733-供应商内部帐套">7.3.3 供应商内部帐套 </h4>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.3.3.1</strong> 如果供应商是内部帐套，会在对应帐套中生成客户订单</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>7.3.3.2</strong> 对应帐套中审核送货单会将对应的成本回传到基本帐套的收货单</li>
+</ul>
+<hr>
+<h2 id="8-采购收货">8. 采购收货 </h2>
+<h3 id="81-数量回退">8.1 数量回退 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 修改数量或者删除会回退到采购汇总</li>
+</ul>
+<h3 id="82-平均成本计算">8.2 平均成本计算 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 审核后会计算平均成本（昨日同一质量的商品与当日同一质量的商品累计平均）
+<ul>
+<li><strong>8.2.1</strong> 收货单对应日期的送货单成本会改变（平均价）</li>
+<li><strong>8.2.2</strong> 将库存表中的待入量列的数量转移到库存列中</li>
+<li><strong>8.2.3</strong> 更新商品资料的最新进价与平均进价</li>
+<li><strong>8.2.4</strong> 更新商品关联的供货商成本价（用于区分多个供货商不同的成本价）</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="9-配货">9. 配货 </h2>
+<h3 id="91-质量区分">9.1 质量区分 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 配货与配货表打印中可以区分质量（标准质量不显示标识）</li>
+</ul>
+<h3 id="92-数据同步">9.2 数据同步 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 配货后数据自动同步到对应的送货单中</li>
+</ul>
+<h3 id="93-存货清点表">9.3 存货清点表 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 存货清点表是用于库存清点的参考数据（注意库存量是否准确）</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 是提供给系统清点库存录入的实际数据</li>
+</ul>
+<hr>
+<h2 id="10-库存清点">10. 库存清点 </h2>
+<blockquote>
+<p>每日对余下商品的库存进行调整，供后面采购确认存货</p>
+<p><strong>注意</strong>：如果当天的收货单没有处理完不可以操作</p>
+</blockquote>
+<h3 id="101-库存调入">10.1 库存调入 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 调入对应的日期库存按质量区分</li>
+</ul>
+<h3 id="102-损耗成本">10.2 损耗成本 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> 审核后更新对应日期送货单中的损耗成本（具体分配计算方式查看「损耗分配文档」）</li>
+</ul>
+<hr>
+<h2 id="附录测试优先级说明">附录：测试优先级说明 </h2>
+<table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0</td>
+<td>核心业务流程，必须100%通过</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>主要功能，影响业务流程</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>次要功能，有替代方案</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>优化建议，不影响主流程</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>文档结束</em></p>
+</div>
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

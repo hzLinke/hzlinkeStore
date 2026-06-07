@@ -1,0 +1,215 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 2040954 */
+  src: url('iconfont.woff2?t=1658398815923') format('woff2'),
+       url('iconfont.woff?t=1658398815923') format('woff'),
+       url('iconfont.ttf?t=1658398815923') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.iconbasic_cate:before {
+  content: "\e617";
+}
+
+.iconchengguozhuanhua:before {
+  content: "\e658";
+}
+
+.iconIntegralConvert:before {
+  content: "\e632";
+}
+
+.iconMessage1:before {
+  content: "\e67b";
+}
+
+.iconIntegral:before {
+  content: "\e619";
+}
+
+.iconSwap:before {
+  content: "\e655";
+}
+
+.iconCoupon:before {
+  content: "\e60e";
+}
+
+.iconBank:before {
+  content: "\e67a";
+}
+
+.iconStoreName:before {
+  content: "\e61f";
+}
+
+.iconBankCard:before {
+  content: "\e622";
+}
+
+.iconPerson:before {
+  content: "\e603";
+}
+
+.iconVersion:before {
+  content: "\e60b";
+}
+
+.iconLink:before {
+  content: "\e64d";
+}
+
+.iconPhone:before {
+  content: "\e66f";
+}
+
+.iconSlae:before {
+  content: "\e625";
+}
+
+.iconMessage:before {
+  content: "\e65b";
+}
+
+.iconWaitOut:before {
+  content: "\e6c2";
+}
+
+.iconAuthorization:before {
+  content: "\e63b";
+}
+
+.iconCate:before {
+  content: "\e7f9";
+}
+
+.iconWxPay:before {
+  content: "\e61e";
+}
+
+.iconAliPay:before {
+  content: "\e65e";
+}
+
+.iconPalancePay:before {
+  content: "\e618";
+}
+
+.iconPayOk:before {
+  content: "\e615";
+}
+
+.iconBackSpace:before {
+  content: "\e714";
+}
+
+.iconDel:before {
+  content: "\e61a";
+}
+
+.iconCheck1:before {
+  content: "\e62a";
+}
+
+.iconCheck:before {
+  content: "\e63a";
+}
+
+.iconCollection:before {
+  content: "\e646";
+}
+
+.iconHome:before {
+  content: "\e659";
+}
+
+.iconCart:before {
+  content: "\e611";
+}
+
+.iconDec:before {
+  content: "\e608";
+}
+
+.iconWaitOut1:before {
+  content: "\e684";
+}
+
+.iconEdit:before {
+  content: "\e639";
+}
+
+.iconDelete:before {
+  content: "\e60a";
+}
+
+.iconPlus:before {
+  content: "\e629";
+}
+
+.iconNav:before {
+  content: "\e600";
+}
+
+.iconwaitPay:before {
+  content: "\e626";
+}
+
+.iconRecharge:before {
+  content: "\e614";
+}
+
+.iconService:before {
+  content: "\e61c";
+}
+
+.iconset:before {
+  content: "\e667";
+}
+
+.iconTeam:before {
+  content: "\e610";
+}
+
+.iconQrCode:before {
+  content: "\e65f";
+}
+
+.iconLeft:before {
+  content: "\e64a";
+}
+
+.iconWaitIn:before {
+  content: "\e60d";
+}
+
+.iconAflterSale:before {
+  content: "\e70b";
+}
+
+.iconDown:before {
+  content: "\e627";
+}
+
+.iconAddress:before {
+  content: "\e628";
+}
+
+.iconAllOrder:before {
+  content: "\e63f";
+}
+
+.iconRight:before {
+  content: "\e788";
+}
+
+.iconUp:before {
+  content: "\e789";
+}
+

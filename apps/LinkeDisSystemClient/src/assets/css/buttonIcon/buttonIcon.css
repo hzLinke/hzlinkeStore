@@ -1,0 +1,149 @@
+@font-face {font-family: "lkxfont";
+    src:url('//at.alicdn.com/t/font_2204691_ycpbi2yenl.ttf?t=1620510836387') format('truetype');
+  }
+  
+  .lkx-icon{
+    font-family: "lkxfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .lkx-icon-separate:before { /*分隔*/
+    content: "\e62b";
+  }
+  
+  .lkx-icon-goto:before {
+    content: "\e65c";
+  }
+  
+  .lkx-icon-last:before {
+    content: "\e774";
+  }
+  
+  .lkx-icon-top-copy:before {
+    content: "\e8b1";
+  }
+  
+  .lkx-icon-noCheck:before {
+    content: "\e648";
+  }
+  
+  .lkx-icon-check:before {
+    content: "\e611";
+  }
+  
+  .lkx-icon-shrink:before {
+    content: "\e60b";
+  }
+  
+  .lkx-icon-expand:before {
+    content: "\e8b0";
+  }
+  
+  .lkx-icon-treeClose:before {
+    content: "\e65b";
+  }
+  
+  .lkx-icon-treeOpen:before {
+    content: "\e659";
+  }
+  
+  .lkx-icon-arrowLeft:before {
+    content: "\e601";
+  }
+  
+
+  
+  .lkx-icon-add:before {
+    content: "\e632";
+  }
+  
+  .lkx-icon-dec:before {
+    content: "\e633";
+  }
+  
+  .lkx-icon-arrowRight:before {
+    content: "\e600";
+  }
+  
+  .lkx-icon-serach:before {
+    content: "\e674";
+  }
+  
+  .lkx-icon-more:before {
+    content: "\e8af";
+  }
+  
+  .lkx-icon-arrowUp:before {
+    content: "\e641";
+  }
+  
+  .lkx-icon-arrowDown:before {
+    content: "\e64b";
+  }
+
+  .lkx-icon-up:before {
+    content: "\e642";
+  }
+  
+  .lkx-icon-down:before {
+    content: "\e6b0";
+  }
+
+  .lkx-icon-left:before {
+    content: "\e643";
+  }
+  
+  .lkx-icon-right:before {
+    content: "\e644";
+  }
+  
+  .lkx-icon-tableSet:before {
+    content: "\e615";
+  }
+  .lkx-icon-exportIn:before {
+    content: "\e639";
+  }
+  .lkx-icon-exportOut:before {
+    content: "\e666";
+  }
+  .lkx-icon-refresh:before {
+    content: "\e6e9";
+  }
+
+  .lkx-icon-clear:before {/*清除*/
+    content: "\e6ad";
+  }
+
+  .lkx-icon-insert:before { /*增加*/
+    content: "\e8a2";
+  }
+
+  .lkx-icon-delete:before { /*删除*/
+    content: "\e8a3";
+  }
+
+  .lkx-icon-cancel:before { /*取消*/
+    content: "\e60d";
+  }
+
+  .lkx-icon-save:before { /*保存*/
+    content: "\e61f";
+  }
+
+  .lkx-icon-print:before { /*打印*/
+    content: "\e6a5";
+  }
+
+  .lkx-icon-help:before { /*帮助*/
+    content: "\e60c";
+  }
+  .lkx-icon-swap:before { /*交换*/
+    content: "\e655";
+  }
+
+  
+  
+  
